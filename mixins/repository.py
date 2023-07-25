@@ -4,6 +4,9 @@ from mixins.Message import Message
 
 
 class Repository(ABC):
+    """
+    Repository interface to be used as abstraction to access data layer and return objects
+    """
 
     @abstractmethod
     def create(self, command: Message):
@@ -20,3 +23,7 @@ class Repository(ABC):
     @abstractmethod
     def update_by_id(self, id: str, command: Message):
         raise NotImplementedError("update_by_id method not implemented")
+
+    @abstractmethod
+    def delete_by_id(self, id: str):
+        raise NotImplementedError("delete_by_id method not implemented")
