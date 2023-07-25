@@ -1,9 +1,7 @@
-from enum import Enum
-
-
-class Symbol(Enum):
-    AAPL = "AAPL"
-    MSFT = "MSFT"
-    GOOG = "GOOG"
-    AMZN = "AMZN"
-    META = "META"
+symbol_representation = {
+    "AAPL": {"name": "Apple Inc."},
+    "MSFT": {"name": "Microsoft Corporation"},
+    "GOOG": {"name": "Google"},
+    "AMZN": {"name": "Amazon.com, Inc."},
+    "META": {"name": "META"}
+}

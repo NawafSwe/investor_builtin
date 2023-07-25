@@ -5,5 +5,5 @@ router = APIRouter()
 
 
 @router.get("/")
-def get_market_data_route():
-    return get_market_data()
+def get_market_data_route(decimal_places: int = 2):
+    return get_market_data(price_decimal_places=decimal_places)
