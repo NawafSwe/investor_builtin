@@ -1,0 +1,2 @@
+class AlertRuleAlreadyExist(Exception):
+    pass
