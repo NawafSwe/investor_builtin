@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 async def _publish_alert(rule, current_price):
+    await event_handler.connect()
     await event_handler.publish(
         exchange_key="alert_threshold",
         router_key="alert_threshold_price_reached",
