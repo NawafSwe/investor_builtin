@@ -33,6 +33,5 @@ def get_market_data(price_decimal_places: int):
                     symbol=symbol,
                     price=value["price"]
                     , ))
-        return {"data": market_prices, "status": True, "status_code": response.status_code}
-    else:
-        return {"error": response.content, "status": False, "status_code": response.status_code}
+
+        return market_prices

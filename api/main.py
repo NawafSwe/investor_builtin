@@ -25,7 +25,7 @@ async def health():
                                 message=CreateAlertCommand(
                                     symbol="HealthCheck",
                                     original_threshold_price="0",
-                                    reached_threshold_price="0",
+                                    new_price="0",
                                     name="Checking broker health",
                                 ))
 
