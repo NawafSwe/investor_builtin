@@ -1,9 +1,23 @@
 """ Rule Service"""
+
+from sqlalchemy.orm import Session
+
+from db.models.model_base import SessionLocal
+from resources.alerts.alert_schema import CreateAlertCommand
+from resources.alerts.alert_dal import AlertRepository
+
 """_summary_
 this file to write any business logic for the Rules
 """
-# from resources.alerts.alerts_schema import AlertCreate
-# from resources.alerts.alert_dal import create_alert
 
-# def create_new_alert( rule: AlertCreate, session ):
-#     return create_rule( rule=rule, session=session)
+
+async def notify_threshold_reached(command: CreateAlertCommand):
+    """
+    log alert for the threshold reached
+    :param command: to create alert
+    :return:None
+    """
+    db: Session = SessionLocal()
+    AlertRepository(db).create(command)
+    db.commit()
+    return None
