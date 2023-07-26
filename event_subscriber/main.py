@@ -1,16 +1,12 @@
-import asyncio
 import json
 import uuid
-from functools import partial
-from typing import Callable
-
 import aio_pika
-from aiormq.abc import DeliveredMessage
-from pika import BasicProperties
 
 from api.config import Settings
+from mixins.Message import Message
+from resources.alerts.alert_schema import CreateAlertCommand
+from resources.alerts.alert_service import notify_threshold_reached
 
-# Create a connection object to start consuming events
 settings = Settings()
 
 
@@ -18,8 +14,6 @@ class EventHandler:
 
     def __init__(self):
         self._mq_url = f"amqp://{settings.BROKER_USERNAME}:{settings.BROKER_USERNAME}@{settings.BROKER_HOST}"
-        self._exchange_key = "alert_threshold"
-        self._router_key = "alert_threshold_price_reached"
         self.connection = None
         self.channel = None
 
@@ -52,16 +46,17 @@ class EventHandler:
         async with message.process():
             body = message.body.decode()
             correlation_id = message.headers.get("correlation_id")
-            print("message received here, id: ", correlation_id)
-            print("message received here, body: ", body)
-            # await callback(body, correlation_id)
+            print("[message received]:", correlation_id, " ---- [body]: ", body)
+            if body:
+                body = json.loads(body)
+                await notify_threshold_reached(CreateAlertCommand(**body))
 
     async def publish(
             self,
             exchange_key: str = None,
             router_key: str = None,
             exchange_type: str = None,
-            message: str = None,
+            message: Message = None,
     ):
         exchange = await self.channel.declare_exchange(
             name=exchange_key,
@@ -69,6 +64,6 @@ class EventHandler:
         )
         props = {"correlation_id": str(uuid.uuid4())}
         await exchange.publish(
-            aio_pika.Message(body=message.encode(), headers=props),
+            aio_pika.Message(body=json.dumps(message.dict()).encode('utf-8'), headers=props),
             routing_key=router_key,
         )
