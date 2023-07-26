@@ -18,6 +18,7 @@ async def notify_threshold_reached(command: CreateAlertCommand):
     :return:None
     """
     db: Session = SessionLocal()
-    AlertRepository(db).create(command)
+    alert = AlertRepository(db).create(command)
+    db.add(alert)
     db.commit()
     return None
