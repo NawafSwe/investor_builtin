@@ -24,7 +24,7 @@ async def _publish_alert(rule, current_price):
         message=CreateAlertCommand(
             symbol=rule.symbol,
             original_threshold_price=str(rule.threshold_price),
-            new_price=str(current_price.price),
+            new_price=str(current_price[0].price),
             name=rule.name,
         ))
 
@@ -49,6 +49,6 @@ def fetch_market_data_every_minute():
         logger.info("rule.symbol: " + str(rule.threshold_price))
         logger.info("rule.symbol: " + str(current_price))
         if current_price and float(current_price[0].price) >= float(rule.threshold_price):
-            tasks.append(asyncio.ensure_future(_publish_alert(rule, current_price[0])))
+            tasks.append(asyncio.ensure_future(_publish_alert(rule, current_price)))
     loop.run_until_complete(asyncio.gather(*tasks))
     logger.info("Finished running tasks")
