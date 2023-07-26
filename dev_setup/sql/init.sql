@@ -17,7 +17,7 @@ CREATE TABLE alerts
     name                     STRING NOT NULL,
     symbol                   STRING NOT NULL,
     original_threshold_price STRING NOT NULL,
-    reached_threshold_price  STRING NOT NULL,
+    new_price  STRING NOT NULL,
     created_at               DATE   NOT NULL DEFAULT now(),
     updated_at               DATE   NOT NULL DEFAULT now()
 );

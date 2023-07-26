@@ -12,4 +12,4 @@ class CreateAlertCommand(BaseModel, Command):
     symbol: str
     name: str
     original_threshold_price: str
-    reached_threshold_price: str
+    new_price: str

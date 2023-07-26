@@ -13,6 +13,6 @@ class Alert(Base):
     name = Column(String, index=True, nullable=False)
     symbol = Column(String, index=True, nullable=False)
     original_threshold_price = Column(String, nullable=False)
-    reached_threshold_price = Column(String, nullable=False)
+    new_price = Column(String, nullable=False)
     created_at = Column(Date, nullable=False, default=datetime.now())
     updated_at = Column(Date, nullable=False, default=datetime.now())

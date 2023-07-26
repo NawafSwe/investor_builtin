@@ -28,7 +28,7 @@ class AlertRepository(Repository, ABC):
             name=command.name,
             symbol=command.symbol,
             original_threshold_price=command.original_threshold_price,
-            reached_threshold_price=command.reached_threshold_price)
+            new_price=command.new_price)
         self.db.add(alert)
         return alert
 
