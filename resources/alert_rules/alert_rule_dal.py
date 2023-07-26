@@ -48,5 +48,5 @@ class AlertRuleRepository(Repository):
             (AlertRule.symbol == symbol), (AlertRule.threshold_price == threshold_price)).first()
         return is_already_exist_rule is not None
 
-    def find_by_symbols(self, symbols: list[str]) -> Type[AlertRule]:
-        return self.db.query(AlertRule).filter(AlertRule.symbol in symbols).first()
+    def find_by_symbols(self, symbols: list[str]) -> List[Type[AlertRule]]:
+        return self.db.query(AlertRule).filter(AlertRule.symbol in symbols)
