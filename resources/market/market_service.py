@@ -1,7 +1,7 @@
 """ Market Service """
 from resources.market.market_schema import MarketPrice
 from requests import get
-from constants.symbols import symbol_representation
+from constants.stock_symbols import symbol_representation
 from api.config import Settings
 
 """_summary_
