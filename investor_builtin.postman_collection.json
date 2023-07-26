@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "6c2917f4-f5bb-475b-8f87-56c919f3590d",
+		"name": "investor_builtin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17192928"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/view-alerts/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/view-alerts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"view-alerts",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/view-alerts/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/view-alerts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"view-alerts",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Wed, 26 Jul 2023 20:08:04 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "611"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"Apple Inc.\",\n        \"symbol\": \"AAPL\",\n        \"new_price\": \"194.52\",\n        \"created_at\": \"2023-07-26\",\n        \"original_threshold_price\": \"150.0000000000\",\n        \"id\": \"22bc6665-812d-4000-8611-70fe00d96b06\",\n        \"updated_at\": \"2023-07-26\"\n    },\n    {\n        \"name\": \"MetLife, Inc.\",\n        \"symbol\": \"META\",\n        \"new_price\": \"298.76\",\n        \"created_at\": \"2023-07-26\",\n        \"original_threshold_price\": \"50.0000000000\",\n        \"id\": \"410cb715-726b-423b-b383-5def78fc3f9d\",\n        \"updated_at\": \"2023-07-26\"\n    },\n    {\n        \"name\": \"Microsoft Corporation\",\n        \"symbol\": \"MSFT\",\n        \"new_price\": \"337.93\",\n        \"created_at\": \"2023-07-26\",\n        \"original_threshold_price\": \"300.0000000000\",\n        \"id\": \"a123b80b-d220-4241-b60a-6eedf8446a3c\",\n        \"updated_at\": \"2023-07-26\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8000/market-prices/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/market-prices/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"market-prices",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/market-prices/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/market-prices/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"market-prices",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Wed, 26 Jul 2023 17:09:35 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "324"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"name\": \"Apple Inc.\",\n            \"symbol\": \"AAPL\",\n            \"price\": \"194.31\"\n        },\n        {\n            \"name\": \"Microsoft Corporation\",\n            \"symbol\": \"MSFT\",\n            \"price\": \"335.54\"\n        },\n        {\n            \"name\": \"Google\",\n            \"symbol\": \"GOOG\",\n            \"price\": \"129.81\"\n        },\n        {\n            \"name\": \"Amazon.com, Inc.\",\n            \"symbol\": \"AMZN\",\n            \"price\": \"127.58\"\n        },\n        {\n            \"name\": \"META\",\n            \"symbol\": \"META\",\n            \"price\": \"297.58\"\n        }\n    ],\n    \"status\": true,\n    \"status_code\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8000/health-check/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/health-check/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"health-check",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/alert-rules/b405fb50-7af4-4737-881d-c876a2c67368/",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"threshold_price\":50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/alert-rules/b405fb50-7af4-4737-881d-c876a2c67368/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"alert-rules",
+						"b405fb50-7af4-4737-881d-c876a2c67368",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/alert-rules/b405fb50-7af4-4737-881d-c876a2c67368/",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"threshold_price\":50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/alert-rules/b405fb50-7af4-4737-881d-c876a2c67368/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"alert-rules",
+								"b405fb50-7af4-4737-881d-c876a2c67368",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Tue, 25 Jul 2023 18:02:24 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "178"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"name\": \"Apple Inc.\",\n        \"symbol\": \"AAPL\",\n        \"id\": \"b405fb50-7af4-4737-881d-c876a2c67368\",\n        \"threshold_price\": 50\n    },\n    \"message\": \"Updated Successfully\",\n    \"status\": true,\n    \"status_code\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8000/alert-rules/1171f7ad-3ea7-4d8b-8eca-216135c08f9e/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/alert-rules/1171f7ad-3ea7-4d8b-8eca-216135c08f9e/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"alert-rules",
+						"1171f7ad-3ea7-4d8b-8eca-216135c08f9e",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/alert-rules/1171f7ad-3ea7-4d8b-8eca-216135c08f9e/",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/alert-rules/1171f7ad-3ea7-4d8b-8eca-216135c08f9e/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"alert-rules",
+								"1171f7ad-3ea7-4d8b-8eca-216135c08f9e",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Wed, 26 Jul 2023 14:20:25 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8000/alert-rules/9d6ba1fc-bf58-447f-aea3-4801b722645d/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/alert-rules/9d6ba1fc-bf58-447f-aea3-4801b722645d/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"alert-rules",
+						"9d6ba1fc-bf58-447f-aea3-4801b722645d",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/alert-rules/9d6ba1fc-bf58-447f-aea3-4801b722645d/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/alert-rules/9d6ba1fc-bf58-447f-aea3-4801b722645d/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"alert-rules",
+								"9d6ba1fc-bf58-447f-aea3-4801b722645d",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Tue, 25 Jul 2023 18:01:22 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "180"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"name\": \"Apple Inc.\",\n        \"symbol\": \"AAPL\",\n        \"id\": \"9d6ba1fc-bf58-447f-aea3-4801b722645d\",\n        \"threshold_price\": 50\n    },\n    \"message\": \"Successfully Retrieved\",\n    \"status\": true,\n    \"status_code\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8000/alert-rules/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Apple Inc.\",\n    \"symbol\": \"AAPL\",\n    \"threshold_price\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/alert-rules/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"alert-rules",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/alert-rules/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Apple Inc.\",\n    \"symbol\": \"AAPL\",\n    \"threshold_price\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/alert-rules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"alert-rules",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Wed, 26 Jul 2023 14:20:33 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "241"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Alert Rule created successfully\",\n    \"data\": {\n        \"name\": \"Apple Inc.\",\n        \"id\": \"78d11f58-9425-41a5-ba91-edb9bf5f8bf0\",\n        \"created_at\": \"2023-07-26\",\n        \"threshold_price\": 10,\n        \"symbol\": \"AAPL\",\n        \"updated_at\": \"2023-07-26\"\n    },\n    \"status\": true,\n    \"status_code\": 201\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8000/alert-rules/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/alert-rules/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"alert-rules",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/alert-rules/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/alert-rules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"alert-rules",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Wed, 26 Jul 2023 20:05:46 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "891"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"symbol\": \"GOOG\",\n            \"created_at\": \"2023-07-26\",\n            \"threshold_price\": 2000,\n            \"id\": \"1dc093f4-4788-462c-a37f-46a9b1b0be29\",\n            \"name\": \"Alphabet Inc.\",\n            \"updated_at\": \"2023-07-26\"\n        },\n        {\n            \"symbol\": \"AMZN\",\n            \"created_at\": \"2023-07-26\",\n            \"threshold_price\": 3000,\n            \"id\": \"380396cf-4ac2-412d-a3cd-bb18d0f03039\",\n            \"name\": \"Amazon.com, Inc.\",\n            \"updated_at\": \"2023-07-26\"\n        },\n        {\n            \"symbol\": \"MSFT\",\n            \"created_at\": \"2023-07-26\",\n            \"threshold_price\": 300,\n            \"id\": \"46f0d451-875c-4969-a50f-2945d2affc0f\",\n            \"name\": \"Microsoft Corporation\",\n            \"updated_at\": \"2023-07-26\"\n        },\n        {\n            \"symbol\": \"AAPL\",\n            \"created_at\": \"2023-07-26\",\n            \"threshold_price\": 150,\n            \"id\": \"4dd17431-a71e-4aa6-83cc-e436ee7f072e\",\n            \"name\": \"Apple Inc.\",\n            \"updated_at\": \"2023-07-26\"\n        },\n        {\n            \"symbol\": \"META\",\n            \"created_at\": \"2023-07-26\",\n            \"threshold_price\": 50,\n            \"id\": \"62d68e68-2422-4228-940a-fe3f06d0def6\",\n            \"name\": \"MetLife, Inc.\",\n            \"updated_at\": \"2023-07-26\"\n        }\n    ],\n    \"message\": \"Successfully Retrieved\",\n    \"status\": true,\n    \"status_code\": 200\n}"
+				}
+			]
+		}
+	]
+}
