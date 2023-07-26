@@ -13,9 +13,11 @@ CREATE TABLE IF NOT EXISTS alerts_rules
 
 CREATE TABLE alerts
 (
-    id         UUID            DEFAULT gen_random_uuid() PRIMARY KEY,
-    name       STRING NOT NULL,
-    symbol     STRING NOT NULL,
-    created_at DATE   NOT NULL DEFAULT now(),
-    updated_at DATE   NOT NULL DEFAULT now()
+    id                       UUID            DEFAULT gen_random_uuid() PRIMARY KEY,
+    name                     STRING NOT NULL,
+    symbol                   STRING NOT NULL,
+    original_threshold_price STRING NOT NULL,
+    reached_threshold_price  STRING NOT NULL,
+    created_at               DATE   NOT NULL DEFAULT now(),
+    updated_at               DATE   NOT NULL DEFAULT now()
 );
