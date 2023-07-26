@@ -78,3 +78,13 @@ def find_and_delete_alert_rule_by_id(rule_id: str, db: Session) -> None:
     if alert_rule:
         db.delete(alert_rule)
         db.commit()
+
+
+def find_alert_rules_by_symbols(symbols: list[str], db: Session):
+    """
+    find alert rule by symbol
+    :param symbols: list of symbol
+    :param db: sqlalchemy.orm.Session
+    :return: Alert Rule
+    """
+    return AlertRuleRepository(db).find_by_symbols(symbols)
