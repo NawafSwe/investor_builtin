@@ -8,9 +8,11 @@ from db.models.model_base import setup_db
 from event_subscriber.main import EventHandler
 from api.config import Settings
 from resources.alerts.alert_schema import CreateAlertCommand
+from worker.app import create_celery_app
 
 settings = Settings()
 app = init_routes(FastAPI())
+celery_app = create_celery_app()
 event_handler = EventHandler()
 if __name__ == "__main__":
     setup_db()
@@ -42,7 +44,12 @@ async def _startup_event():
     )
 
 
+def start_celery_worker():
+    celery_app.worker_main(argv=['worker', '--loglevel=INFO'])
+
+
 @app.on_event("startup")
 async def startup():
     loop = asyncio.get_running_loop()
     loop.create_task(_startup_event())
+    start_celery_worker()
