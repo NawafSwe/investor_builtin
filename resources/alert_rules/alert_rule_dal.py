@@ -4,12 +4,12 @@ from typing import List, Type
 from sqlalchemy.orm import Session
 from decimal import Decimal
 from mixins.repository import Repository
+from resources.alert_rules.alert_rule_schema import CreateAlertRuleCommand, UpdateAlertRuleCommand
+from db.models import AlertRule
 
 """_summary_
 this file is to right any ORM logic for the Alert Rule model
 """
-from resources.alert_rules.alert_rule_schema import CreateAlertRuleCommand, UpdateAlertRuleCommand
-from db.models import AlertRule
 
 
 class AlertRuleRepository(Repository):
