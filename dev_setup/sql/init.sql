@@ -21,3 +21,11 @@ CREATE TABLE alerts
     created_at               DATE   NOT NULL DEFAULT now(),
     updated_at               DATE   NOT NULL DEFAULT now()
 );
+
+
+INSERT INTO alerts_rules (symbol, name, threshold_price)
+VALUES ('AAPL', 'Apple Inc.', 150.00),
+       ('MSFT', 'Microsoft Corporation', 250),
+       ('GOOG', 'Alphabet Inc.', 2000),
+       ('AMZN', 'Amazon.com, Inc.', 1000),
+       ('META', 'MetLife, Inc.', 50.00);
