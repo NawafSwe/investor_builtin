@@ -42,13 +42,13 @@ def fetch_market_data_every_minute():
     logger.info(f"found rules: {alert_rules}")
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    tasks = []
+    events = []
     for rule in alert_rules:
         current_price = [c for c in prices if c.symbol == rule.symbol]
         logger.info("rule.symbol: " + rule.symbol)
         logger.info("rule.symbol: " + str(rule.threshold_price))
         logger.info("rule.symbol: " + str(current_price))
         if current_price and float(current_price[0].price) >= float(rule.threshold_price):
-            tasks.append(asyncio.ensure_future(_publish_alert(rule, current_price)))
-    loop.run_until_complete(asyncio.gather(*tasks))
+            events.append(asyncio.ensure_future(_publish_alert(rule, current_price)))
+    loop.run_until_complete(asyncio.gather(*events))
     logger.info("Finished running tasks")
