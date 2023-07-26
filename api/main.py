@@ -7,6 +7,7 @@ from api.routes import init_routes
 from db.models.model_base import setup_db
 from event_subscriber.main import EventHandler
 from api.config import Settings
+from resources.alerts.alert_schema import CreateAlertCommand
 
 settings = Settings()
 app = init_routes(FastAPI())
@@ -18,6 +19,16 @@ if __name__ == "__main__":
 
 @app.get("/health-check")
 async def health():
+    await event_handler.publish(exchange_key="alert_threshold",
+                                router_key="alert_threshold_price_reached",
+                                exchange_type="topic",
+                                message=CreateAlertCommand(
+                                    symbol="HealthCheck",
+                                    original_threshold_price="0",
+                                    reached_threshold_price="0",
+                                    name="Checking broker health",
+                                ))
+
     return {"status": "ok"}
 
 
@@ -29,9 +40,6 @@ async def _startup_event():
         queue=settings.ALERTS_QUEUE,
         exchange_type="topic",
     )
-
-    await event_handler.publish(exchange_key="alert_threshold",
-                                router_key="alert_threshold_price_reached", exchange_type="topic", message="hello here event")
 
 
 @app.on_event("startup")
