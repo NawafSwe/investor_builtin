@@ -49,4 +49,4 @@ class AlertRuleRepository(Repository):
         return is_already_exist_rule is not None
 
     def find_by_symbols(self, symbols: list[str]) -> List[Type[AlertRule]]:
-        return self.db.query(AlertRule).filter(AlertRule.symbol in symbols)
+        return self.db.query(AlertRule).filter(AlertRule.symbol.in_(symbols)).all()
