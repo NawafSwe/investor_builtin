@@ -41,7 +41,6 @@ class AlertRuleRepository(Repository):
 
     def delete_by_id(self, id: str) -> Type[AlertRule]:
         alert_rule = self.find_by_id(id)
-        print(f"alert rule --> {alert_rule}")
         return alert_rule
 
     def is_alert_rule_already_exist(self, symbol: str, threshold_price: Decimal) -> bool:
