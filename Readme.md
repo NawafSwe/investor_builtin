@@ -10,6 +10,7 @@
 # How to run the project:
 - Clone the project
 - Install docker and docker-compose
+- Obtain API key from twelvedata.com and add it to .env file
 - Run the following command to start the project:
 ``` make up ``` to install and run the docker images for the project which includes the following:
   - Cockroachdb
@@ -19,7 +20,9 @@
 - Run docker compose up to spin up:
   - FastAPI server
   - Celery
-  - Celery beat
+  - Celery beat 
+- To terminate the project, run the following command:
+``` make down ``` then ```docker compose down --volumes```
 
 - Once you start the project, there will be already defined alert rules for the investor. You can check the rules by going to the following url:
   - http://localhost:8000/alert-rules
