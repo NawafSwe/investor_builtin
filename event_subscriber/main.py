@@ -14,7 +14,6 @@ settings = Settings()
 class EventHandler:
 
     def __init__(self):
-        self._mq_url = f"amqp://{settings.BROKER_USERNAME}:{settings.BROKER_USERNAME}@{settings.BROKER_HOST}"
         self.connection = None
         self.channel = None
 
@@ -47,7 +46,6 @@ class EventHandler:
         async with message.process():
             body = message.body.decode()
             correlation_id = message.headers.get("correlation_id")
-            print("self._mq_url: " +  f"amqp://{settings.BROKER_USERNAME}:{settings.BROKER_USERNAME}@{settings.BROKER_HOST}")
             print("[message received]:", correlation_id, " ---- [body]: ", body)
             if body:
                 body = json.loads(body)
