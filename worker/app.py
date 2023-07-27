@@ -7,7 +7,7 @@ def create_celery_app():
     app = Celery(
         'worker',
         broker='amqp://guest:guest@rabbitmq-node:5672/',
-        include=['api.main']
+        include=['resources.market.tasks']
     )
     app.conf.update(
         broker_connection_retry=True,

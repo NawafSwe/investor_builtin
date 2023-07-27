@@ -2,7 +2,6 @@ import asyncio
 import threading
 
 from celery.schedules import crontab
-from fastapi.logger import logger
 from sqlalchemy.orm import Session
 from uvicorn import run
 from fastapi import FastAPI, Depends
@@ -18,8 +17,6 @@ from worker.app import create_celery_app
 settings = Settings()
 app = init_routes(FastAPI())
 celery_app = create_celery_app()
-logger.info("settings.BROKER_HOST: " + settings.BROKER_HOST)
-logger.info("settings.BROKER_HOST: " + settings.DB_HOST)
 celery_app.conf.beat_schedule = {
     'fetch_market_data_every_minute': {
         'task': 'resources.market.tasks.fetch_market_data_every_minute',
@@ -47,6 +44,7 @@ async def health():
 
     return {"status": "ok"}
 
+
 @app.get("/view-alerts")
 def view_alerts(db: Session = Depends(get_db)):
     return AlertRepository(db).find_all()
@@ -66,7 +64,6 @@ def start_celery_worker():
     t = threading.Thread(target=celery_app.worker_main, kwargs={'argv': ['worker', '--loglevel=INFO']})
     t.start()
     from resources.market import tasks
-
 
 
 @app.on_event("startup")
