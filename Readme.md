@@ -15,15 +15,11 @@
   - Cockroachdb
   - RabbitMQ
   - 
-- Create your own python environment:
-  - ``python3 -m venv venv``
-- Activate python environment:
-  - ``source venv/bin/activate``
-
-- Run the following command to start the celery and beat:
-  - ``celery -A api.main.celery_app beat``
-- Run the following command to start the fastAPI server:
-  - ``uvicorn api.main:app --host 0.0.0.0 --port 8000``
+- Create your own environment, please refer to .env.example
+- Run docker compose up to spin up:
+  - FastAPI server
+  - Celery
+  - Celery beat
 
 - Once you start the project, there will be already defined alert rules for the investor. You can check the rules by going to the following url:
   - http://localhost:8000/alert-rules
