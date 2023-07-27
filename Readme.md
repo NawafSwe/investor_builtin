@@ -1,5 +1,5 @@
 # Investor built-in project: 
-This project is built-in for the investor to set threshold for stock prices and get notified when the stock price is above the threshold.
+This project is built-in for the investor to set the threshold for stock prices and get notified when the stock price is above the threshold.
 
 # Tech stack used in the project:
 - Python
@@ -16,13 +16,13 @@ This project is built-in for the investor to set threshold for stock prices and 
 ``` make up ``` to install and run the docker images for the project which includes the following:
   - Cockroachdb
   - RabbitMQ
-  - 
+  
 - Create your own environment, please refer to .env.example
 - Run docker compose up to spin up:
   - FastAPI server
   - Celery
   - Celery beat 
-- To terminate the project, run the following command:
+- To terminate the project, run the following commands:
 ``` make down ``` then ```docker compose down --volumes```
 
 - Once you start the project, there will be already defined alert rules for the investor. You can check the rules by going to the following url:
