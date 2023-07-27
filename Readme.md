@@ -1,4 +1,5 @@
-# Investor built-in project: This project is built-in for the investor to set threshold for stock prices and get notified when the stock price is above the threshold.
+# Investor built-in project: 
+This project is built-in for the investor to set threshold for stock prices and get notified when the stock price is above the threshold.
 
 # Tech stack used in the project:
 - Python
