@@ -4,4 +4,13 @@ from celery import Celery
 # Create a celery app object to start your workers
 
 def create_celery_app():
-    return Celery('worker', broker='amqp://localhost', backend='rpc://')
+    app = Celery(
+        'worker',
+        broker='amqp://guest:guest@rabbitmq-node:5672/',
+        include=['api.main']
+    )
+    app.conf.update(
+        broker_connection_retry=True,
+        broker_connection_retry_on_startup=True
+    )
+    return app

@@ -1,6 +1,7 @@
 import json
 import uuid
 import aio_pika
+from fastapi.logger import logger
 
 from api.config import Settings
 from mixins.Message import Message
@@ -18,7 +19,7 @@ class EventHandler:
         self.channel = None
 
     async def connect(self):
-        self.connection = await aio_pika.connect_robust(url=self._mq_url)
+        self.connection = await aio_pika.connect_robust(url="amqp://guest:guest@rabbitmq-node:5672/")
         self.channel = await self.connection.channel()
 
     async def subscribe(
@@ -46,6 +47,7 @@ class EventHandler:
         async with message.process():
             body = message.body.decode()
             correlation_id = message.headers.get("correlation_id")
+            print("self._mq_url: " +  f"amqp://{settings.BROKER_USERNAME}:{settings.BROKER_USERNAME}@{settings.BROKER_HOST}")
             print("[message received]:", correlation_id, " ---- [body]: ", body)
             if body:
                 body = json.loads(body)
