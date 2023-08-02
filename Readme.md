@@ -18,7 +18,7 @@ This project is built-in for the investor to set the threshold for stock prices 
   - RabbitMQ
   
 - Create your own environment, please refer to .env.example
-- Run docker compose up to spin up:
+- Run ```docker compose up``` to spin up:
   - FastAPI server
   - Celery
   - Celery beat 
